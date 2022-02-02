@@ -266,3 +266,40 @@
     transform:rotate(360deg);
   }
 }
+
+
+@media only screen and (max-width:768px){
+  .body--section{
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  .section--home .body--section .grid--publications .publications .content--publication a article {
+    margin-top: 0.2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+    text-align: justify;
+  }
+}
+
+@media only screen and (max-width:465px){
+  .header .header--h1{
+    padding: 2.75rem 5.375rem;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+    color: #3b3b3b;
+  }
+  .section--home .body--section .grid--publications {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 0.5em 2.5em;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+}

@@ -63,7 +63,7 @@ To carry out the production deployment of this application, you must perform the
 
   `npm run build`
 
-### :electric_plug: Ejecución de la Aplicación
+### :electric_plug: Application Execution
 
 ---
 
@@ -72,7 +72,7 @@ To run the application, you must simply type one of the following  one command i
 - Application in development mode (development):
 
   `ng serve`
-### :mag_right: Referencias
+### :mag_right: References
 
 ---
 

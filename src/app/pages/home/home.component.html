@@ -53,7 +53,11 @@
     <!-- SELECT NEWS -->
 
     <!-- PUBLICATIONS -->
-      <div class="grid--publications" *ngIf="btnShow == 0">
+      <div
+        class="grid--publications"
+        *ngIf="btnShow == 0"
+        infiniteScroll
+        (scrolled)="onScrollDown(chooseFramework.title)">
 
         <div class="publications animate__animated animate__fadeIn" *ngIf="dataNews.length==0">
 
@@ -79,7 +83,7 @@
           <div class="content--publication">
             <span>
               <i class="far fa-clock"></i>
-              <p>2 hours ago by {{item.author}}</p>
+              <p> {{getDay(item.created_ad)}} {{getMonth(item.created_ad)}} by {{item.author}}</p>
             </span>
 
             <a href="{{item.story_url}}" target="_blank" rel="noopener noreferrer">
@@ -151,3 +155,19 @@
   <i class="fas fa-chevron-circle-up"></i>
 </div>
 <!-- BUTTON TO UP -->
+
+<!-- TOAST DATA -->
+<div class="toast-data" *ngIf="showToast" (click)="onScrollTop()">
+ - No more data news -
+</div>
+<!-- TOAST DATA -->
+
+<!-- TOAST LOADING -->
+<div class="toast-loading-background animate__animated animate__pulse" *ngIf="showLoading">
+  <div class="toast-loading">
+    <i class="fas fa-spinner"></i>
+  </div>
+</div>
+<!-- TOAST LOADING -->
+
+

@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { ApiUrlPublishedService } from '../../services/api-urlPublished.service';
 import { publish, storage } from '../../interfaces/published.interface';
+import { SnackBarComponent } from '../../components/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,14 @@ export class HomeComponent implements OnInit {
 
   /* VARIABLES */
   showbtn = false;
+  showToast = false;
+  showLoading = false;
+  infinityScroll = false;
+  maxPage = 50;
   countPage = 0;
   lengthPublish = 20;
-  btnShow = 0
+  btnShow = 0;
+  durationInSeconds = 5;
   chooseFramework = {
       title:'Select your news',
       img: 'none'};
@@ -29,9 +35,7 @@ export class HomeComponent implements OnInit {
     private _news : ApiUrlPublishedService
   ) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   /* Method to know if the user scrolls */
   @HostListener('window:scroll')
@@ -45,13 +49,33 @@ export class HomeComponent implements OnInit {
 
   /* Method to comeback up page */
   onScrollTop(): void{
-
     this.document.documentElement.scrollTop = 0;
   }
 
+  onScrollDown(framework:string):void{
+    this.infinityScroll = false;
+    this.lengthPublish += 20;
+    this.countPage+=1;
+
+    if(this.countPage >= this.maxPage){
+      this.infinityScroll = true;
+      this.showToast =  true;
+    }else{
+      this._news.getNews(framework, this.countPage.toString()).subscribe(
+        Response => {
+          console.log(Response)
+          this.buildData(Response.body, framework)
+        },
+        Error => {
+          console.error(Error);
+        }
+      )
+    }
+  }
 
   /* Load the news */
   onLoadData(framework:string, idPage:string):void{
+    this.showLoading = true
 
     if(this.chooseFramework?.title != framework){
       this.chooseFramework = {
@@ -62,10 +86,13 @@ export class HomeComponent implements OnInit {
       /* Empty Arrays Data */
       this.dataNews = []
       this.dataFavorite = []
+      this.countPage = 0
+      this.showToast = false
 
       /* Build the favorites news */
       let data = JSON.parse(localStorage.getItem(framework));
       if(data!=null){
+        this.showLoading = false;
         for(let i in data){
           if(data[i].like){
             this.dataFavorite.push(data[i])
@@ -76,12 +103,14 @@ export class HomeComponent implements OnInit {
 
     let tecnology =  localStorage.getItem(framework)
 
-    if((tecnology != null) && (this.dataNews.length < this.lengthPublish) ){
+    if((tecnology != null) && (this.dataNews.length > this.lengthPublish) && (this.infinityScroll)){
       this.dataNews = JSON.parse(localStorage.getItem(framework))
+      this.showLoading = false;
     }else{
       this._news.getNews(framework, idPage).subscribe(
         Response => {
-          console.log(Response)
+          console.log(Response);
+          this.maxPage = Response.body.nbPages;
           this.buildData(Response.body, framework)
         },
         Error => {
@@ -115,15 +144,14 @@ export class HomeComponent implements OnInit {
         };
     };
 
-    console.log(data.nbPages)
-    console.log(this.countPage)
     if((this.dataNews.length < this.lengthPublish) && (this.countPage+1 < data.nbPages)){
       this.countPage = data.page + 1;
       this.onLoadData(this.chooseFramework.title, this.countPage.toString());
     }else{
       console.log(this.dataNews)
-
+      this.showLoading = false;
       localStorage.setItem(framework,JSON.stringify(this.dataNews))
+      this.infinityScroll = true;
     }
   }
 
@@ -148,5 +176,29 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
+  /* Method date */
+  getDay(date: Date){
+    let day = new Date(date).getDate()
+    return day
+  }
+
+  getMonth(date: Date){
+    let month = new Date(date).getMonth()
+
+    if(month==0){ return 'january' }
+    if(month==1){ return 'february' }
+    if(month==2){ return 'march' }
+    if(month==3){ return 'april' }
+    if(month==4){ return 'may' }
+    if(month==5){ return 'june' }
+    if(month==6){ return 'july' }
+    if(month==7){ return 'august' }
+    if(month==8){ return 'september' }
+    if(month==9){ return 'octpber' }
+    if(month==10){ return 'november' }
+    if(month==11){  return 'december' }
+  }
+
 
 }

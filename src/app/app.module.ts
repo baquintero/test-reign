@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+/* COMPONENTS */
 import { AppComponent } from './app.component';
-import { AllPublicationComponent } from './components/all-publication/all-publication.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AllPublicationComponent,
-    HomeComponent
+    HomeComponent,
+    SnackBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

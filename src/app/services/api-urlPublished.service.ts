@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { environment} from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 const API_URL = environment.api.url;
 
@@ -13,7 +14,8 @@ export class ApiUrlPublishedService {
     public _http: HttpClient
   ) {}
 
-  testService(){
-    console.log('servicio en funcionamiento, ruta de produccion ' + API_URL)
+  getNews(framework:string, idPage:string): Observable<any> {
+    return this._http.get(API_URL+'/v1/search_by_date?query='+framework+'&page='+ idPage,{observe:'response'})
   }
+
 }

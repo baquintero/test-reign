@@ -1,1 +1,93 @@
-<p>home works!</p>
+<header class="header">
+  <h1 class="header--h1">Hacker News</h1>
+</header>
+
+<section class="section--home">
+  <div class="btn--publications--type">
+    <button class="active-left">All</button>
+    <button>My faves</button>
+  </div>
+
+  <div class="body--section">
+
+    <!-- SELECT NEWS -->
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        Select your news
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>
+          <button class="dropdown-item" type="button">
+          <img src="../../../assets/frameworks/angular.png" alt="">
+          Angular
+        </button>
+        </li>
+        <li>
+          <button class="dropdown-item" type="button">
+            <img src="../../../assets/frameworks/react.png" alt="">
+            React
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" type="button">
+            <img src="../../../assets/frameworks/vuejs.png" alt="">
+            Vuejs
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- SELECT NEWS -->
+
+    <!-- PUBLICATIONS -->
+    <div class="grid--publications">
+
+      <div class="publications">
+
+        <div class="content--publication">
+          <span>
+            <i class="far fa-clock"></i>
+            <p>2 hours ago by author</p>
+          </span>
+
+          <article>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae distinctio ipsum eius, porro quia doloremque fuga blanditiis.</article>
+        </div>
+
+        <div class="segment--like">
+          <i class="far fa-heart"></i>
+          <!-- <i class="fas fa-heart"></i> -->
+        </div>
+
+      </div>
+
+      <div class="publications">
+
+        <div class="content--publication">
+          <span>
+            <i class="far fa-clock"></i>
+            <p>2 hours ago by author</p>
+          </span>
+
+          <article>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae distinctio ipsum eius, porro quia doloremque fuga blanditiis.</article>
+        </div>
+
+        <div class="segment--like">
+          <i class="far fa-heart"></i>
+          <!-- <i class="fas fa-heart"></i> -->
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- PUBLICATIONS -->
+
+
+  </div>
+
+</section>
+
+<!-- BUTTON TO UP -->
+<div class="btn--come-to-up" *ngIf="showbtn" (click)="onScrollTop()">
+  <i class="fas fa-chevron-circle-up"></i>
+</div>

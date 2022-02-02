@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* FONT FAMILY */
+$titles: 'Libre Baskerville', serif;
+$subtitle: 'Roboto', sans-serif;
+
+/* GENERAL STYLES*/
+html{
+  scroll-behavior: smooth;
+}

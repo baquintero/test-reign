@@ -1,0 +1,191 @@
+@import 'src/styles.scss';
+.header{
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(236,236,236,1) 60%);
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
+  margin-top: -1rem;
+
+  .header--h1{
+    padding: 2.75rem 9.375rem;
+    font-family: $titles;
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+    text-transform:uppercase;
+    color: #3b3b3b;
+  }
+}
+.section--home{
+
+  /* BUTTONS NEWS ALL / FAVORITES */
+  .btn--publications--type{
+    display: flex;
+    justify-content: center;
+    margin-top: 4.563rem;
+
+    button{
+      cursor: pointer;
+      background-color: #fcfcfc;
+      width: 7rem;
+      height: 1.938rem;
+      border-radius: 2px;
+      font-size: 1rem;
+      font-family: $subtitle;
+      font-weight: 500;
+      letter-spacing: normal;
+      text-align: center;
+      border: 1px solid #d6d6d6;
+      color: #606060;
+    }
+  }
+
+  /* BODY SECTION OF PUBLICATIONS */
+  .body--section{
+    padding-left: 9.375rem;
+    padding-right: 9.375rem;
+
+    /* SELECT NEWS */
+    .dropdown{
+      margin-top: 2.5rem;
+
+      .btn{
+        width: 15rem;
+        text-align: left;
+        font-family: $subtitle;
+        font-weight: 400;
+        font-size: .875rem;
+        border: 1px solid rgba(0, 21, 41, 0.12);
+      }
+      .btn:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.05rem rgb(0 0 0);
+      }
+      .dropdown-toggle::after {
+        display: inline-block;
+        margin-left: 6.8em;
+      }
+
+      .dropdown-menu{
+        border: none;
+        box-shadow: 1px 2px 2px 0 rgba(0 ,0 ,0, .1);
+        li{
+          display: flex;
+          align-items: center;
+          width: 15rem;
+          padding: .2rem .7rem;
+
+          img{
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+
+          button{
+            font-family: $subtitle;
+            font-size: .875rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    /* GRID PUBLICATIONS */
+    .grid--publications{
+      display: grid;
+      grid-template-columns: 48% 48%;
+      gap: .5em 2.5em;
+      margin-top: 2.5rem;
+
+      .publications{
+        display: flex;
+        align-items: center;
+        border: 1px solid #D1D1D1;
+        border-radius: 6px;
+        background-color: #fff;
+        transition: all .3s ease-in-out;
+        margin-bottom: 0.875rem;
+
+        .content--publication{
+          padding: 1.438rem;
+
+          span{
+            display: flex;
+            align-items: center;
+            font-family: $subtitle;
+            font-weight: 400;
+
+            i{
+              color: #606060;
+              font-size: .875rem;
+              margin-right: .4rem;
+            }
+
+            p{
+              color: #6c6c6c;
+              font-size: .688rem;
+              margin: 0;
+            }
+          }
+
+          article{
+            margin-top: .2rem;
+            font-family: $subtitle;
+            font-weight: 500;
+            font-size: .875rem;
+            letter-spacing: .25px;
+            line-height: 20px;
+            text-align: justify;
+            color: #6b6b6b;
+          }
+        }
+
+        .segment--like{
+          padding: 1.438rem;
+          background-color: #f5f5f5;
+          border-radius: 0px 5px 5px 0px;
+          height: 100%;
+
+          i{
+            cursor: pointer;
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            color: #DD0031;
+          }
+        }
+
+        &:hover{
+          opacity: 40%;
+        }
+      }
+    }
+  }
+
+}
+
+.btn--come-to-up{
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+
+  i{
+    font-size: 2.5rem;
+    color: #1797ff;
+    text-shadow: 2px 2px 5px rgba(0 ,0 ,0, .2);
+  }
+
+}
+
+/* CLASS BUTTONS ACTIVE */
+.active-left{
+  border-top: solid 2px #1797ff !important;
+  border-bottom: solid 2px #1797ff !important;
+  border-left: solid 2px #1797ff !important;
+  color: #1797ff !important;
+}
+
+.active-right{
+  border-top: solid 2px #1797ff !important;
+  border-bottom: solid 2px #1797ff !important;
+  border-right: solid 2px #1797ff !important;
+  color: #1797ff !important;
+}
